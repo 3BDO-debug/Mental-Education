@@ -1,0 +1,488 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Mental Learner | Quiz</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static 'assets/quizStyling/css/bootstrap.css' %}">
+
+    <!-- External Css -->
+    <link rel="stylesheet" href="{%static 'assets/quizStyling/css/line-awesome.min.css' %}">
+
+    <!-- Custom Css --> 
+    <link rel="stylesheet" type="text/css" href="{%static 'assets/quizStyling/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'assets/quizStyling/css/style.css' %}">
+ 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link href="{%static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" href="{%static 'assets/images/favicon.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{%static 'assets/images/favicon.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{%static 'assets/images/favicon.png' %}">
+
+    <link rel="stylesheet" href="{%static 'assets/css/preloader.css' %}" />
+
+  </head>
+  <body>
+    <div id="preloader" class="preloader__container uk-animation-slide-top">
+      <div class="book">
+        <div class="inner">
+          <div class="left"></div>
+          <div class="middle"></div>
+          <div class="right"></div>
+        </div>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content" hidden class="ugf-covid covid-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <nav class="navbar navbar-expand-md anfra-nav">
+              <a class="navbar-brand" href="../index.html">
+                <img src="images/logo.png" alt="">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="las la-bars"></i>
+              </button>
+
+
+            </nav>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+            <div class="covid-wrap">
+              <h2>Covid-19 risk test</h2>
+              <form action="#">
+                <div class="covid-test-wrap test-step active">
+                  <div class="test-progress">
+                    <div class="test-progress-step">
+                      <span class="step-number">1/7</span>
+                      <svg>
+                        <circle class="step-1" cx="30" cy="30" r="28" stroke-width="4" fill="none" role="slider" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3>Have you been in close contact with a confirmed case of Covid-19?</h3>
+                  <div class="step-block">
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="yes">
+                      <label for="yes">Yes, I am</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="no">
+                      <label for="no">No, I don’t</label>
+                    </div>
+                    <a href="#" class="button">Next</a>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step">
+                  <div class="test-progress">
+                    <a href="#" class="prev-btn"><img src="images/arrow-left-grey.png" alt="">Previous</a>
+                    <div class="test-progress-step">
+                      <span class="step-number">2/7</span>
+                      <svg>
+                        <circle class="step-2" cx="30" cy="30" r="28" stroke-width="4" fill="none" role="slider" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3>Your last 14 days travel history</h3>
+                  <p>You can select multiple options or no</p>
+                  <div class="step-block">
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="one">
+                      <label for="one">Europe/USA/China (Corona affected area)</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="two">
+                      <label for="two">Close contact with foreign people</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="three">
+                      <label for="three">Close contact with corona symptoms man</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="four">
+                      <label for="four">No, I do not</label>
+                    </div>
+                    <a href="#" class="button">Next</a>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step">
+                  <div class="test-progress">
+                    <a href="#" class="prev-btn"><img src="images/arrow-left-grey.png" alt="">Previous</a>
+                    <div class="test-progress-step">
+                      <span class="step-number">3/7</span>
+                      <svg>
+                        <circle class="step-3" cx="30" cy="30" r="28" stroke-width="4" fill="none" role="slider" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3>What’s your body temperature now?</h3>
+                  <p>Make sure it in fahrenheit scale</p>
+                  <div class="step-block">
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="five">
+                      <label for="five">Normal temperature ( 96°F - 98.6°F )</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="six">
+                      <label for="six">Feverish ( 98.6°F - 102°F ) </label>
+                    </div>
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="seven">
+                      <label for="seven">High temperature ( 102°F + )</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="eight">
+                      <label for="eight">I don’t know</label>
+                    </div>
+                    <a href="#" class="button">Next</a>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step">
+                  <div class="test-progress">
+                    <a href="#" class="prev-btn"><img src="images/arrow-left-grey.png" alt="">Previous</a>
+                    <div class="test-progress-step">
+                      <span class="step-number">4/7</span>
+                      <svg>
+                        <circle class="step-4" cx="30" cy="30" r="28" stroke-width="4" fill="none" role="slider" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3>Do you have this symptoms?</h3>
+                  <p>You can select multiple options or no</p>
+                  <div class="step-block">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="nine">
+                          <label for="nine">Dry Cough</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="ten">
+                          <label for="ten">Tiredness</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="eleven">
+                      <label for="eleven">Shortness of breath or difficulty breathing</label>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="tweleve">
+                          <label for="tweleve">Headache</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="thirteen">
+                          <label for="thirteen">Sore throat</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="fourteen">
+                          <label for="fourteen">Runny nose</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="fifteen">
+                          <label for="fifteen">No, I don’t</label>
+                        </div>
+                      </div>
+                    </div>
+                    <a href="#" class="button">Next</a>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step">
+                  <div class="test-progress">
+                    <a href="#" class="prev-btn"><img src="images/arrow-left-grey.png" alt="">Previous</a>
+                    <div class="test-progress-step">
+                      <span class="step-number">5/7</span>
+                      <svg>
+                        <circle class="step-5" cx="30" cy="30" r="28" stroke-width="4" fill="none" role="slider" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3>Have additional symptoms?</h3>
+                  <p>You can select multiple options or no</p>
+                  <div class="step-block">
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="sixteen">
+                      <label for="sixteen">Loss of taste or smell</label>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="seventeen">
+                          <label for="seventeen">Diarrhoea</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="eighteen">
+                          <label for="eighteen">Rash on skin</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="nineteen">
+                          <label for="nineteen">Vomiting</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="twentee">
+                          <label for="twentee">Body aches</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="twenteeone">
+                      <label for="twenteeone">No, I don’t have</label>
+                    </div>
+                    <!-- <p class="error-msg">* Select at least one option</p> -->
+                    <a href="#" class="button">Next</a>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step">
+                  <div class="test-progress">
+                    <a href="#" class="prev-btn"><img src="images/arrow-left-grey.png" alt="">Previous</a>
+                    <div class="test-progress-step">
+                      <span class="step-number">6/7</span>
+                      <svg>
+                        <circle class="step-6" cx="30" cy="30" r="28" stroke-width="4" fill="none" role="slider" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3>Symptom observation last 48 hours</h3>
+                  <p>Mention your feeling from last 48 hours</p>
+                  <div class="step-block">
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="twenteetwo">
+                      <label for="twenteetwo">Better from before</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="twenteetheree">
+                      <label for="twenteetheree">No change</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="twenteefour">
+                      <label for="twenteefour">Bad from before</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="radio" name="package-plan" class="form-control" id="twenteefive">
+                      <label for="twenteefive">I can’t feel</label>
+                    </div>
+                    <a href="#" class="button">Next</a>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step">
+                  <div class="test-progress">
+                    <a href="#" class="prev-btn"><img src="images/arrow-left-grey.png" alt="">Previous</a>
+                    <div class="test-progress-step">
+                      <span class="step-number final-step">7/7</span>
+                      <svg>
+                        <circle class="step-7" cx="30" cy="30" r="28" stroke-width="4" fill="none" role="slider" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3>Have this disease from before ?</h3>
+                  <p>You can select multiple options or no</p>
+                  <div class="step-block">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="twenteesix">
+                          <label for="twenteesix">Asthma</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="twenteeseven">
+                          <label for="twenteeseven">Diabetes</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="twenteeight">
+                          <label for="twenteeight">High Pressure</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="twenteenine">
+                          <label for="twenteenine">Heart disease</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="thirty">
+                          <label for="thirty">Kidney disease</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="checkbox" name="package-plan" class="form-control" id="thirtyone">
+                          <label for="thirtyone">Cancer</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="package-plan" class="form-control" id="thirtytwo">
+                      <label for="thirtytwo">No, I don’t have</label>
+                    </div>
+                    <a href="#" class="button">See Result</a>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step asign-info">
+                  <div class="test-progress">
+                    <img src="images/covid/result.png" class="img-fluid" alt="">
+                  </div>
+                  <h3>High risk of infection</h3>
+                  <p>Fillup the form below, Your nearest sample collector team contact immediately</p>
+                  <div class="step-block">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Name" required>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Phone Number"> <!-- error class: has-error -->
+                          <!-- <span class="error-msg">This field is required!</span> -->
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <div class="select-input">
+                            <span></span>
+                            <select class="form-control">
+                              <option value="">Age Range</option>
+                              <option value="">0 - 10</option>
+                              <option value="">11 - 20</option>
+                              <option value="">21 - 30</option>
+                              <option value="">31 - 40</option>
+                              <option value="">41 - 50</option>
+                              <option value="">51 - Avobe</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Full Address">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="radio" name="selectgender" class="form-control" id="gmale" required>
+                          <label for="gmale">Male</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="radio" name="selectgender" class="form-control" id="gfemale" required>
+                          <label for="gfemale">Female</label>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="button">Submit info</button>
+                  </div>
+                </div>
+                <div class="covid-test-wrap test-step test-report">
+                  <div class="test-progress">
+                    <img src="images/big-green-check.png" class="img-fluid" alt="">
+                  </div>
+                  <h3>Thank you for submission</h3>
+                  <p>Don’t be afried, Our telemedical team also give you proper guideline </p>
+                  <h4>Stay Home <span class="line">&#73;</span> Stay Safe</h4>
+                  <a href="../index.html" class="button-reload">Back to main demo</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="footer">
+              <div class="footer-social">
+                <a href="#"><i class="lab la-facebook-f"></i></a>
+                <a href="#"><i class="lab la-twitter"></i></a>
+                <a href="#"><i class="lab la-linkedin-in"></i></a>
+                <a href="#"><i class="lab la-youtube"></i></a>
+                <a href="#"><i class="lab la-instagram"></i></a>
+              </div>
+              <div class="copyright-text">
+                <p>Copyright © 2021 Anfra, All rights reserved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{%static 'assets/quizStyling/js/jquery.js' %}"></script>
+    <script src="{%static 'assets/quizStyling/js/popper.js' %}"></script>
+    <script src="{%static 'assets/quizStyling/js/bootstrap.js' %}"></script>
+
+    <script src="{%static 'assets/quizStyling/js/custom.js' %}"></script>
+    <script src="{%static 'assets/js/preloader.js' %}"></script>
+
+  </body>
+</html>

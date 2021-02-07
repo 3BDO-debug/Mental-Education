@@ -1,0 +1,196 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        <!-- Basic Page Needs
+            ================================================== -->
+        <title>Mental Learner | Register</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Mental Learner-Educational Platform" />
+        <!-- UIkit CSS -->
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/css/uikit.min.css"
+        />
+    
+        <!-- UIkit JS -->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/js/uikit-icons.min.js"></script>
+    
+        <!-- Favicon -->
+        <link
+          href="{%static 'assets/images/favicon.png' %}"
+          rel="icon"
+          type="image/png"
+        />
+    
+        <!-- CSS 
+            ================================================== -->
+        <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+        <link rel="stylesheet" href="{%static 'assets/css/night-mode.css' %}" />
+        <link rel="stylesheet" href="{%static 'assets/css/bootstrap.css' %}" />
+    
+        <link rel="stylesheet" href="{%static 'assets/css/extra.css' %}" />
+    
+        <!-- icons
+            ================================================== -->
+        <link rel="stylesheet" href="{%static 'assets/css/icons.css' %}" />
+        <link rel="stylesheet" href="{%static 'assets/css/preloader.css' %}" />
+      </head>
+
+
+<body>
+    <div id="preloader" class="preloader__container uk-animation-slide-top">
+        <div class="book">
+          <div class="inner">
+            <div class="left"></div>
+            <div class="middle"></div>
+            <div class="right"></div>
+          </div>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+
+
+    <!-- Content
+    ================================================== -->
+    <div id="content" uk-height-viewport class="uk-flex uk-flex-middle">
+        <div class="uk-width-2-3@m uk-width-1-2@s m-auto rounded">
+            <div class="uk-child-width-1-2@m uk-grid-collapse bg-gradient-grey" uk-grid>
+
+                <!-- column one -->
+                <div class="uk-margin-auto-vertical uk-text-center uk-animation-scale-up p-3 uk-light">
+                    <i class=" uil-graduation-hat icon-large"></i>
+                    <h3 class="mb-4"> Courseplus</h3>
+                    <p>The Place You can learn Every Thing. </p>
+                </div>
+
+                <!-- column two -->
+                    <div class="uk-card-default p-5 rounded">
+                        <div class="mb-4 uk-text-center">
+                            <h3 class="mb-0"> Create new Account</h3>
+                            <p class="my-2">Login to manage your account.</p>
+                        </div>
+                        
+
+                    <form action="/Accounts/User/Register" method="POST" class="uk-child-width-1-1 uk-grid-small" uk-grid>
+                        
+                        {% csrf_token %}
+                        <div>
+                            <div class="uk-form-group">
+                                <label class="uk-form-label">Full Name</label>
+
+                                <div class="uk-position-relative w-100">
+                                    <span class="uk-form-icon">
+                                        <i class="icon-feather-user"></i>
+                                    </span>
+                                    <input name="user_full_name" class="uk-input" type="text" placeholder="Full name" required>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-form-group">
+                                <label class="uk-form-label"> Email</label>
+
+                                <div class="uk-position-relative w-100">
+                                    <span class="uk-form-icon">
+                                        <i class="icon-feather-mail"></i>
+                                    </span>
+                                    <input name="user_email" class="uk-input" type="email" placeholder="name@example.com" required>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="uk-width-1-2@s">
+                            <div class="uk-form-group">
+                                <label class="uk-form-label"> Password</label>
+
+                                <div class="uk-position-relative w-100">
+                                    <span class="uk-form-icon">
+                                        <i class="icon-feather-lock"></i>
+                                    </span>
+                                    <input name="user_password" class="uk-input" type="password" placeholder="********" required>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="uk-width-1-2@s">
+                            <div class="uk-form-group">
+                                <label class="uk-form-label"> Confirm password</label>
+
+                                <div class="uk-position-relative w-100">
+                                    <span class="uk-form-icon">
+                                        <i class="icon-feather-lock"></i>
+                                    </span>
+                                    <input name="user_confirm_password" class="uk-input" type="password" placeholder="********" required>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid>
+                                <div class="uk-width-expand@s">
+                                    <p> Already have an account? <a href="/View/Auth/Login">Login</a></p>
+                                </div>
+                                <div class="uk-width-auto@s">
+                                    <input type="submit" class="btn btn-default" value="Get Started"></input>
+                                </div>
+                            </div>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="uk-alert " uk-alert>
+                            <a class="uk-alert-close" uk-close></a>
+                            <p class="text-secondary">{{message}}</p>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </form>
+                </div><!--  End column two -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -End
+    ================================================== -->
+
+
+    <!--Night Mode-->
+    <script src="{%static 'assets/js/nightMode.js' %}"></script>
+    <!-- javaScripts
+    ================================================== -->
+    <script src="{%static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{%static 'assets/js/simplebar.js' %}"></script>
+    <script src="{%static 'assets/js/main.js' %}"></script>
+    <script src="{%static 'assets/js/bootstrap-select.min.js' %}"></script>
+    <script src="{%static 'assets/js/preloader.js' %}"></script>
+
+
+</body>
+
+</html>

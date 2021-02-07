@@ -1,0 +1,666 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Mental Learner</title>   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mental Learner-Educational Platform">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/js/uikit-icons.min.js"></script>
+
+
+    <!-- Favicon -->
+    <link href="{%static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+
+    <!-- CSS 
+    ================================================== -->
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/night-mode.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/bootstrap.css' %}"> 
+
+    <link rel="stylesheet" href="{%static 'assets/css/extra.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/preloader.css' %}" />
+
+
+    <!-- icons
+    ================================================== -->
+    <link rel="stylesheet" href="{%static 'assets/css/icons.css' %}">
+
+
+</head>
+
+<body>
+    <div  id="preloader" class="preloader__container uk-animation-slide-top">
+        <div class="book">
+          <div class="inner">
+            <div class="left"></div>
+            <div class="middle"></div>
+            <div class="right"></div>
+          </div>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    <div id="content" hidden>
+
+        <!-- Header Container
+        ================================================== -->
+        <header class="header header-transparent uk-light" uk-sticky="top:20 ; cls-active:header-sticky ; cls-inactive: uk-light">
+
+            <div class="container">
+                <nav uk-navbar>
+
+                    <!-- left Side Content -->
+                    <div class="uk-navbar-left">
+
+                        <span class="btn-mobile" uk-toggle="target: #content ; cls: mobile-active"></span>
+
+
+
+                        <!-- logo -->
+                        <a href="/" class="logo">
+                            <img src="{%static 'assets/images/logo-dark.svg' %}" alt="">
+                            <span> Courseplus</span>
+                        </a>
+
+                        <!-- breadcrumbs -->
+                        <nav id="breadcrumbs">
+                            <ul>
+                                <li><a href="/"> Home </a></li>
+                                
+                            </ul>
+                        </nav>
+
+
+                    </div>
+
+
+                    <!--  Right Side Content   -->
+
+                    <div class="uk-navbar-right">
+                        {% if user.is_authenticated %}
+                        <div class="header-widget">
+                            <!-- User icons close mobile-->
+                            <span style="color: #3e416d;" class="icon-feather-x icon-small uk-hidden@s "
+                                uk-toggle="target: .header-widget ; cls: is-active"> </span>
+
+
+                            <a href="#" class="header-widget-icon"
+                                uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
+                                <i style="color: #3e416d;" class="uil-youtube-alt"></i>
+                            </a>
+
+                            <!-- courses dropdown List -->
+                            <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"
+                                class="dropdown-notifications my-courses-dropdown">
+
+                                <!-- notivication header -->
+                                <div class="dropdown-notifications-headline">
+                                    <h4>Your Courses</h4>
+                                    <a href="#">
+                                        <i class="icon-feather-settings"
+                                            uk-tooltip="title: Notifications settings ; pos: left"></i>
+                                    </a>
+                                </div>
+
+                                <!-- notification contents -->
+                                <div class="dropdown-notifications-content uk-panel-scrollable" data-simplebar>
+
+                                    <!-- notiviation list -->
+                                    <ul>
+
+                                        {% for user_selected_course in user.user_selected_courses.all %}
+                                        <li class="notifications-not-read">
+                                            <a href="/View/{{user_selected_course.course_name_as_slug}}">
+                                                <span class="notification-image">
+                                                    <img src="{{user_selected_course.course_thumbnail.url}}" alt=""> </span>
+                                                <span class="notification-text">
+                                                    <span class="course-title">{{user_selected_course.course_name}}
+                                                    </span>
+
+                                                    <span class="course-progressbar">
+                                                        <span class="course-progressbar-filler"
+                                                            style="width:95%"></span>
+                                                    </span>
+                                                </span>
+
+                                                <!-- option menu -->
+
+                                            </a>
+
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+
+                                </div>
+                                <div class="dropdown-notifications-footer">
+                                    <a href="/View/Student-Profile#on-going-courses"> view all</a>
+                                </div>
+                            </div>
+
+                            <!-- wishlist icon  -->
+
+                            <a href="#" class="header-widget-icon"
+                            uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
+                            <i style="color: #3e416d;" class="uil-heart-alt"></i>
+                            <span>{{user_wishlist.wished_courses.count}}</span>
+                        </a>
+                   
+                            <!-- wishlist dropdown list -->
+                            <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"
+                            class="dropdown-notifications my-courses-dropdown">
+                            <!--wishlist content-->
+                            
+
+                            <!-- notivication header -->
+                            <div class="dropdown-notifications-headline">
+                                <h4>Wishlist</h4>
+                                <a href="#">
+                                    <i class="icon-feather-settings"
+                                        uk-tooltip="title: Notifications settings ; pos: left"></i>
+                                </a>
+                            </div>
+
+                            <!-- notification contents -->
+                            <div class="dropdown-notifications-content uk-panel-scrollable" data-simplebar>
+
+                                <!-- notiviation list -->
+                                <ul>
+                                    {% if  user_wishlist.wished_courses.all %}
+
+                                    {% for course in user_wishlist.wished_courses.all %}
+                                    <li class="notifications-not-read">
+                                        <a href="/View/{{course.course_name_as_slug}}/Course-Intro">
+                                            <span class="notification-image">
+                                                <img src="{{course.course_thumbnail.url}}" alt=""> </span>
+                                            <span class="notification-text">
+                                                <span class="course-title">{{course.course_name}}
+                                                </span>
+
+                                                <span class="course-progressbar">
+                                                    <span class="course-progressbar-filler"
+                                                        style="width:95%"></span>
+                                                </span>
+                                            </span>
+
+                                            <!-- option menu -->
+
+                                        </a>
+
+                                    </li>
+                                    {% endfor %}
+
+                                    {% else %}
+
+                                    <h4 style="color: #3e416d;" class="uk-align-center">wishlist is empty</h4>
+                                   {% endif %}
+                                </ul>
+
+                            </div>
+                            
+                        </div>
+
+
+                            <!-- Message  -->
+
+
+
+                            <!-- Message  notificiation dropdown -->
+
+
+
+                            <!-- profile-icon-->
+
+                            <a href="#" class="header-widget-icon profile-icon">
+                                <img src="{{user.user_profile_pic.url}}" alt="" class="header-profile-icon">
+                            </a>
+
+                            <div uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
+
+                                <!-- User Name / Avatar -->
+                                <a href="/View/Student-Profile">
+
+                                    <div class="dropdown-user-details">
+                                        <div class="dropdown-user-avatar">
+                                            <img src="{{user.user_profile_pic.url}}" alt="">
+                                        </div>
+                                        <div class="dropdown-user-name">
+                                            {{user.user_full_name}} <span>Student</span>
+                                        </div>
+                                    </div>
+
+                                </a>
+
+                                <!-- User menu -->
+
+                                <ul class="dropdown-user-menu">
+
+                                    <li><a href="/View/Student-Profile-Settings">
+                                            <i class="icon-feather-settings"></i> Account Settings</a>
+                                    </li>
+                                    <li><a href="#" style="color:#62d76b">
+                                            <i class="icon-feather-star"></i> Upgrade To Premium</a>
+                                    </li>
+                                    <li class="menu-divider">
+                                    <li><a href="#">
+                                            <i class="icon-feather-help-circle"></i> Help</a>
+                                    </li>
+                                    <li><a href="/Accounts/User/Logout">
+                                            <i class="icon-feather-log-out"></i> Logout</a>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- icon search-->
+                        <a class="uk-navbar-toggle uk-hidden@s"
+                            uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">
+                            <i class="uil-search icon-small"></i>
+                        </a>
+                        
+                        <!-- User icons -->
+                            <a href="#" class="uil-user icon-small uk-hidden@s"
+                            uk-toggle="target: .header-widget ; cls: is-active">
+                            </a>
+                            
+                        {% else %}
+                        <div class="header-widget">
+                            <!-- User icons close mobile-->
+                            <span style="color: #3e416d;" class="icon-feather-x icon-small uk-hidden@s "
+                                uk-toggle="target: .header-widget ; cls: is-active"> </span>
+
+
+
+
+                            <!-- courses dropdown List -->
+
+                            <!-- notificiation icon  -->
+
+                            <a href="/View/Auth/Login" uk-tooltip="title: Login ; pos: bottom ;offset:21" class="uil-user icon-small ">
+                            </a>
+
+                            <!-- notificiation dropdown -->
+
+
+
+                            <!-- Message  -->
+
+
+
+                            <!-- Message  notificiation dropdown -->
+
+
+
+                            <!-- profile-icon-->
+
+
+
+
+                        </div>
+
+
+
+                        <!-- icon search-->
+
+                        
+                        <!-- User icons -->
+                            <a href="/View/Auth/Login" class="uil-user icon-small uk-hidden@s">
+                            </a>
+                            
+                        
+                            
+                        {% endif %}
+                            
+                    </div>
+                    <!-- End Right Side Content / End -->
+
+
+                </nav>
+
+            </div>
+            <!-- container  / End -->
+
+        </header>
+
+        <!-- overlay seach on mobile-->
+        <div class="nav-overlay uk-navbar-left uk-position-relative uk-flex-1 bg-grey uk-light p-2" hidden
+            style="z-index: 10000;">
+            <div class="uk-navbar-item uk-width-expand" style="min-height: 60px;">
+                <form class="uk-search uk-search-navbar uk-width-1-1">
+                    <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                </form>
+            </div>
+            <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+                href="#"></a>
+        </div>
+
+        <!-- search overlay-->
+        <div id="searchbox">
+
+            <div class="search-overlay"></div>
+
+            <div class="search-input-wrapper">
+                <div class="search-input-container">
+                    <div class="search-input-control">
+                        <span class="icon-feather-x btn-close uk-animation-scale-up"
+                            uk-toggle="target: #searchbox; cls: is-active"></span>
+                        <div class=" uk-animation-slide-bottom">
+
+                            <form action="/View/Find-Course" method="GET">
+                                <input type="text" name="search" autofocus required>
+                            </form>
+                            <p class="search-help">Type the name of the Course you are looking for, then press enter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- side nav-->
+        <div class="side-nav uk-animation-slide-left-medium">
+
+
+            <div class="side-nav-bg"></div>
+
+            <!-- logo -->
+            <div class="logo uk-visible@s">
+                <a href="/">
+                    <i class=" uil-graduation-hat"></i>
+                </a>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="#"> <i class="uil-play-circle"></i> </a>
+                    <div class="side-menu-slide">
+                        <div class="side-menu-slide-content">
+                            <ul data-simplebar>
+                                {% for edu_stage in edu_stages %}
+                                <li>
+                                    <a href="/View/{{edu_stage.id}}/Levels"> <i class="icon-line-awesome-bookmark-o "></i> {{edu_stage.edu_stage_name}} </a>
+                                </li>
+                                {% endfor %}
+                        </div>  
+                    </div>
+                </li>
+
+                <li>
+                    <!-- Quizes-->
+                    <a href="/View/Quizes"> <i class="uil-file-alt"></i> <span class="tooltips"> Quizes</span></a>
+                </li>
+
+                <li>
+                    <a href="#" uk-toggle="target: #searchbox; cls: is-active"><i class="uil-search-alt"></i></a>
+                </li>
+
+            </ul>
+            <ul class="uk-position-bottom">
+                <li>
+                    <!-- Lunch information box -->
+                    <a href="#">
+                        <i class="uil-paint-tool"></i>
+                    </a>
+                    <div uk-drop="pos: right-bottom; mode:click ; offset: 10;animation: uk-animation-slide-right-small">
+                        <div class="uk-card-default rounded p-0">
+                            <h5 class="mb-0 p-3 px-4  "> Night mode  </h5>
+                            <div class="p-3 px-4">
+                                <p>Turns the light surfaces of the page dark, creating an experience ideal for night.
+                                </p>
+                                <div class="uk-flex">
+                                    <p class="uk-text-small text-muted">DARK THEME </p>
+                                    <!-- night mode button -->
+                                    <span href="#" id="night-mode" class="btn-night-mode">
+                                        <label class="btn-night-mode-switch">
+                                            <span class="uk-switch-button"></span>
+                                        </label>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon-feather-user"></span>
+                    </a>
+                    <div uk-drop="pos: right-bottom ;mode:click ; offset: 10;animation: uk-animation-slide-right-small">
+                        <div class="uk-card-default rounded p-0">
+                            <a href="user-profile.html" class="p-0">
+
+                                <div class="dropdown-user-details">
+                                    <div class="dropdown-user-avatar">
+                                        <img src="{{user.user_profile_pic.url}}" alt="">
+                                    </div>
+                                    <div class="dropdown-user-name">
+                                        {{user.user_full_name}} <span>Student</span>
+                                    </div>
+                                </div>
+
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-material-outline-dashboard"></i> Dashboard</a>
+                                </li>
+                                <li><a href="user-profile-edit.html">
+                                        <i class="icon-feather-settings"></i> Account Settings</a>
+                                </li>
+                                <li><a href="#" class="text-grey">
+                                        <i class="icon-feather-star"></i> Upgrade To Premium</a>
+                                </li>
+                                <li class="menu-divider">
+                                </li>
+                                <li><a href="#">
+                                        <i class="icon-feather-help-circle"></i> Help</a>
+                                </li>
+                                <li><a href="page-login.html">
+                                        <i class="icon-feather-log-out"></i> Sing Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="page-content">
+
+
+            <div class="home-hero banner__image" data-src="http://demo.foxthemes.net/courseplusv3.3/assets/images/home-hero.png" uk-img>
+                <div class="uk-width-1-1">
+                    <div class="page-content-inner uk-position-z-index">
+                        <h1>Learn HTML , CSS , iphone <br> Apps & More</h1>
+                        <h4 class="my-lg-4"> Learn how to build websites & apps <br> write a code or start a business </h4>
+                        <a href="#" class="btn btn-default">Free trailer </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+
+
+                <!-- course card resume sliders  -->
+                {% if user.is_authenticated %}
+
+                <div class="section-small">
+
+                    <div uk-slider="finite: true" class="course-grid-slider">
+
+                        <div class="grid-slider-header">
+                            <div>
+                                <h4 class="uk-text-truncate"> on going Courses</a>
+                                </h4>
+                            </div>
+                            <div class="grid-slider-header-link">
+
+                                <a href="/View/Student-Profile#on-going-courses" class="button transparent uk-visible@m"> View all </a>
+                                <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
+                                <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
+
+                            </div>
+                        </div>
+
+                        <ul
+                            class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-5@m uk-grid">
+                            {% for user_selected_course in user.user_selected_courses.all %}
+                            <li>
+                                <a href="/View/{{user_selected_course.course_name_as_slug}}/Course-Details">
+                                    <div class="course-card-resume">
+                                        <div class="course-card-resume-thumbnail">
+                                            <img src="{{user_selected_course.course_thumbnail.url}}">
+                                        </div>
+                                        <div class="course-card-resume-body">
+                                            <h5>{{user_selected_course.course_name}}</h5>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+
+                </div>
+                    
+                {% endif %}
+
+
+
+
+
+                <div class="section-small pt-0">
+
+                    <div class="course-grid-slider" uk-slider="finite: true">
+
+                        <div class="grid-slider-header">
+                            <div>
+                                <h4 class="uk-text-truncate"> Browse recently added
+                                    <a href="#" class="text-muted">Courses</a> </h4>
+                            </div>
+                            <div class="grid-slider-header-link">
+
+                                <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
+                                <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
+
+                            </div>
+                        </div>
+
+                        <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid">
+                            {% for recently_added_course in recently_added_courses %}
+                            <li>
+                                <a href="/View/{{recently_added_course.course_name_as_slug}}/Course-Intro">
+                                    <div class="course-card">
+                                        <div class="course-card-thumbnail ">
+                                            <img src="{{recently_added_course.course_thumbnail.url}}">
+                                            <span class="play-button-trigger"></span>
+                                        </div>
+                                        <div class="course-card-body">
+                                            <div class="course-card-info">
+                                                <div>
+                                                    <span class="catagroy">{{recently_added_course.related_category.category_name}}</span>
+                                                </div>
+                                                <div>
+                                                    <button id="wishlist-successs-notification-toggler" class="demo" onclick="UIkit.notification({message: '<span uk-icon=\'icon: check\'></span> Added to wishlist', pos: 'bottom-right', status:'success'})" hidden></button>
+                                                    <i class="uil-heart-alt icon-small" onclick="wishlistHandler('addToWishList', {{course.id}})"></i>
+                                                </div>
+                                            </div>
+                                            <h4>{{recently_added_course.course_name}} </h4>
+                                            <p>{{recently_added_course.course_description}}</p>
+                                            
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <!-- footer
+               ================================================== -->
+                <div class="footer">
+                    <div class="uk-grid-collapse" uk-grid>
+                        <div class="uk-width-expand@s uk-first-column">
+                            <p>© 2021 <strong>Mental Learner</strong>. All Rights Reserved. </p>
+                        </div>
+                        <div class="uk-width-auto@s">
+                            <nav class="footer-nav-icon">
+                                <ul>
+                                    <li><a href="#"><i class="icon-brand-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
+                                    <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!--Night Mode-->
+    <script src="{%static 'assets/js/nightMode.js' %}"></script>
+    <!-- javaScripts
+    ================================================== -->
+    <script src="{%static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{%static 'assets/js/simplebar.js' %}"></script>
+    <script src="{%static 'assets/js/main.js' %}"></script>
+    <script src="{%static 'assets/js/bootstrap-select.min.js' %}"></script>
+    <script src="{%static 'assets/js/preloader.js' %}"></script>
+
+
+</body>
+
+
+</html>

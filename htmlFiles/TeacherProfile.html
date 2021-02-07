@@ -1,0 +1,454 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Mental Learner | Teacher Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Courseplus - Professional Learning Management HTML Template">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.10/dist/js/uikit-icons.min.js"></script>
+
+
+    <!-- Favicon -->
+    <link href="{%static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+
+    <!-- CSS 
+    ================================================== -->
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/night-mode.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/bootstrap.css' %}"> 
+
+    <link rel="stylesheet" href="{%static 'assets/css/extra.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/preloader.css' %}" />
+
+
+    <!-- icons
+    ================================================== -->
+    <link rel="stylesheet" href="{%static 'assets/css/icons.css' %}">
+
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="admin-panel">
+
+        <!-- menu -->
+
+
+        <!-- Header Container
+        ================================================== -->
+        <header class="header uk-light uk-width-1-1">
+
+            <div class="container">
+                <nav uk-navbar>
+
+                    <!-- left Side Content -->
+                    <div class="uk-navbar-left">
+
+                        <!-- menu icon -->
+                        
+
+
+                        <!-- logo -->
+
+                        <a href="/">
+                            <i style="font-size: 32px;" class="uil-graduation-hat"></i>
+                            <span>Mental Learning</span>
+                        </a>
+
+                        <!-- Search box dropdown -->
+
+                    </div>
+
+
+                    <!--  Right Side Content   -->
+
+                    <div class="uk-navbar-right">
+
+
+
+                        <div class="header-widget">
+
+                            <!-- notificiation icon  -->
+
+
+
+                            <!-- notificiation dropdown -->
+
+
+
+                            <!-- Message  -->
+
+
+
+                            <!-- Message  notificiation dropdown -->
+
+
+
+                            <!-- profile-icon-->
+
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-avatar">
+                                    <img src="{{user.user_profile_pic.url}}" alt="">
+                                </div>
+                                <div class="dropdown-user-name">
+                                    {{user.user_full_name}} <span>Teacher</span>
+                                </div>
+                            </div>
+
+
+                            <div uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
+
+                                <!-- User menu -->
+
+                                <ul class="dropdown-user-menu">
+
+                                    <li>
+                                        <a href="#" id="night-mode" class="btn-night-mode">
+                                            <i class="icon-feather-moon"></i> Night mode
+                                            <span class="btn-night-mode-switch">
+                                                <span class="uk-switch-button"></span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <ul class="menu-divider">
+                                        <li><a href="#">
+                                                <i class="icon-feather-help-circle"></i> Help</a>
+                                        </li>
+                                        <li><a href="/Accounts/User/Logout">
+                                                <i class="icon-feather-log-out"></i>Logout</a>
+                                        </li>
+                                    </ul>
+                                </ul>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- icon search-->
+
+                        <!-- User icons -->
+                        <span class="uil-user icon-small uk-hidden@s"
+                            uk-toggle="target: .header-widget ; cls: is-active">
+                            </spanc>
+
+                    </div>
+                    <!-- End Right Side Content / End -->
+
+
+                </nav>
+
+            </div>
+            <!-- container  / End -->
+
+        </header>
+
+        <!-- content -->
+        <div class="page-content">
+            <div class="page-content-inner pt-lg-0  pr-lg-0">
+
+
+
+                <div class="ro" uk-grid>
+                    <div class="uk-width-expand@m">
+
+
+                        <div class="section-small">
+
+                            <h3> Welcome {{user.user_full_name}}  ! </h3>
+
+                           
+                            
+ 
+
+                            <div class="uk-position-relative uk-visible-toggle " tabindex="-1" uk-slider="finite: true">
+
+                                <ul class="uk-slider-items uk-child-width-1-2@m uk-child-width-1-2@s uk-grid">
+
+                                    <li>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="uk-flex-middle uk-flex-between" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <h5 class="mb-2"> Total sales </h5>
+                                                        <h1> 220.9$</h1>
+                                                        <span class="badge badge-soft-success mt-n1"> +12.9$</span>
+                                                    </div>
+                                                    <div class="">
+                                                        <img class="uk-height-small" src="{%static 'assets/images/d-sales.png' %}" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer d-flex justify-content-between py-2">
+                                                <p class="mb-0"> 124 total sales </p>
+                                                <a href="#" class=" "> Veiw report</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="uk-flex-middle uk-flex-between" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <h5 class="mb-2"> Total Students </h5>
+                                                        <h1> 2900</h1>
+                                                        <span class="badge badge-soft-primary mt-n1"> +56.6%</span>
+                                                    </div>
+                                                    <div class="">
+                                                        <img class="uk-height-small" src="{%static 'assets/images/d-student.png' %}" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer d-flex justify-content-between py-2">
+                                                <p class="mb-0"> 120 New Student </p>
+                                                <a href="#" class=" "> Veiw report</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="uk-flex-middle uk-flex-between" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <h5 class="mb-2"> Total Courses </h5>
+                                                        <h1> 190</h1>
+                                                        <span class="badge badge-soft-success mt-n1"> +16</span>
+                                                    </div>
+                                                    <div class="">
+                                                        <img class="uk-height-small" src="{%static 'assets/images/d-graduation.png' %}" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer d-flex justify-content-between py-2">
+                                                <p class="mb-0"> 230 total Courses </p>
+                                                <a href="#" class=" "> Veiw report</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+
+                                <ul class="uk-slider-nav uk-dotnav uk-flex-center mt-3"></ul>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="uk-card-default rounded  uk-height-large uk-overflow-auto">
+                            <div class="uk-card-header py-3">
+                                <span class="uk-h5"> Your Courses</span>
+
+                            </div>
+
+                            <div class="uk-height-large" data-simplebar>
+
+                                <div class="uk-grid-small p-4" uk-grid>
+                                    <div class="uk-width-1-3@m">
+                                        <img src="../assets/images/course/2.png" class="  rounded" alt="">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h5 class="mb-2"> Learn Anglular Fonduments </h5>
+                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
+                                        </p>
+                                        <p class="mb-0 uk-text-small mt-3">
+                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
+                                                10/2019 </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <hr class="m-0">
+
+                                <div class="uk-grid-small p-4" uk-grid>
+                                    <div class="uk-width-1-3@m">
+                                        <img src="../assets/images/course/3.png" class="  rounded" alt="">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h5 class="mb-2"> The Complete JavaScript </h5>
+                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
+                                        </p>
+                                        <p class="mb-0 uk-text-small mt-3">
+                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
+                                                10/2019 </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <hr class="m-0">
+
+
+                                <div class="uk-grid-small p-4" uk-grid>
+                                    <div class="uk-width-1-3@m">
+                                        <img src="../assets/images/course/1.png" class="  rounded" alt="">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h5 class="mb-2"> Ultimate Web Developer Course </h5>
+                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
+                                        </p>
+                                        <p class="mb-0 uk-text-small mt-3">
+                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
+                                                10/2019 </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <hr class="m-0">
+
+
+                                <div class="uk-grid-small p-4" uk-grid>
+                                    <div class="uk-width-1-3@m">
+                                        <img src="../assets/images/course/2.png" class="  rounded" alt="">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h5 class="mb-2"> Learn Anglular Fonduments </h5>
+                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
+                                        </p>
+                                        <p class="mb-0 uk-text-small mt-3">
+                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
+                                                10/2019 </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <!-- courses selling data -->   
+                        <div class="uk-overflow-auto uk-background-default uk-margin-top uk-box-shadow-medium">
+                            <table class="uk-table uk-table-hover uk-table-divider">
+                                <thead>
+                                    <tr>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                        <th>Table Heading</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                        <td>Table Data</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <!-- footer
+               ================================================== -->
+               <div class="footer">
+                <div class="uk-grid-collapse" uk-grid>
+                    <div class="uk-width-expand@s uk-first-column">
+                        <p>© 2021 <strong>Mental Learner</strong>. All Rights Reserved. </p>
+                    </div>
+                    <div class="uk-width-auto@s">
+                        <nav class="footer-nav-icon">
+                            <ul>
+                                <li><a href="#"><i class="icon-brand-facebook"></i></a></li>
+                                <li><a href="#"><i class="icon-brand-dribbble"></i></a></li>
+                                <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
+                                <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+    <!--Night Mode-->
+    <script src="{%static 'assets/js/nightMode.js' %}"></script>
+    <!-- javaScripts
+    ================================================== -->
+    <script src="{%static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{%static 'assets/js/simplebar.js' %}"></script>
+    <script src="{%static 'assets/js/main.js' %}"></script>
+    <script src="{%static 'assets/js/bootstrap-select.min.js' %}"></script>
+    <script src="{%static 'assets/js/preloader.js' %}"></script>
+
+</body>
+
+</html>
+
