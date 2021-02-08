@@ -88,30 +88,66 @@ def home_page(request):
 
 
 def edu_stage_levels_page(request, edu_stage_id):
+    main_view_data = get_main_view_data(request)
+
     edu_stage_levels = Edu_Stages_Models.EducationStageLevel.objects.filter(
         related_edu_stage=edu_stage_id
     )
-    return render(
-        request, "EduStageLevels.html", {"edu_stage_levels": edu_stage_levels}
-    )
+    if request.user.is_authenticated:
+        return render(
+            request,
+            "EduStageLevels.html",
+            {
+                "edu_stages": main_view_data["edu_stages"],
+                "user_wishlist": main_view_data["user_wishlist"],
+                "edu_stage_levels": edu_stage_levels,
+            },
+        )
+    else:
+        return render(
+            request,
+            "EduStageLevels.html",
+            {
+                "edu_stages": main_view_data["edu_stages"],
+                "edu_stage_levels": edu_stage_levels,
+            },
+        )
 
 
 def edu_stage_level_subjects_page(request, edu_stage_level_id):
+    main_view_data = get_main_view_data(request)
+
     edu_stage_level_subjects = Edu_Stages_Models.Subject.objects.filter(
         related_edu_stage_level=edu_stage_level_id
     )
-    return render(
-        request,
-        "EduStageLevelSubjects.html",
-        {"edu_stage_level_subjects": edu_stage_level_subjects},
-    )
+    if request.user.is_authenticated:
+        return render(
+            request,
+            "EduStageLevelSubjects.html",
+            {
+                "edu_stages": main_view_data["edu_stages"],
+
+                "user_wishlist": main_view_data["user_wishlist"],
+                "edu_stage_level_subjects": edu_stage_level_subjects,
+            },
+        )
+    else:
+        return render(
+            request,
+            "EduStageLevelSubjects.html",
+            {
+                "edu_stages": main_view_data["edu_stages"],
+
+                "edu_stage_level_subjects": edu_stage_level_subjects
+            },
+        )
 
 
 def courses_page(request, related_edu_stage_level_subject_id):
     main_view_data = get_main_view_data(request)
 
     page = request.GET.get("page", 1)
-    
+
     category_courses = Courses_Models.Course.objects.filter(
         related_subject=related_edu_stage_level_subject_id
     ).order_by("-created_at")
@@ -126,7 +162,6 @@ def courses_page(request, related_edu_stage_level_subject_id):
             "Courses.html",
             {
                 "courses": category_courses,
-
                 "num_of_pages": paginator.page_range,
                 "paginator_status": paginator_status,
                 "edu_stages": main_view_data["edu_stages"],
@@ -139,7 +174,6 @@ def courses_page(request, related_edu_stage_level_subject_id):
             "Courses.html",
             {
                 "courses": category_courses,
-
                 "num_of_pages": paginator.page_range,
                 "paginator_status": paginator_status,
                 "edu_stages": main_view_data["edu_stages"],
@@ -233,7 +267,6 @@ def student_profile_page(request):
 
 def student_profile_settings_page(request):
     main_view_data = get_main_view_data(request)
-
 
     return render(
         request,
