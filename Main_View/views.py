@@ -48,7 +48,7 @@ def search_handler(request):
             "SearchResult.html",
             {
                 "search_results": search_results,
-                "categories": main_view_data["categories"],
+                "edu_stages": main_view_data["edu_stages"],
                 "user_wishlist": main_view_data["user_wishlist"],
             },
         )
@@ -58,7 +58,7 @@ def search_handler(request):
             "SearchResult.html",
             {
                 "search_results": search_results,
-                "categories": main_view_data["categories"],
+                "edu_stages": main_view_data["edu_stages"],
             },
         )
 

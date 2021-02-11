@@ -503,143 +503,172 @@
 
         <div class="page-content">
 
-
-            <div class="home-hero banner__image" data-src="http://demo.foxthemes.net/courseplusv3.3/assets/images/home-hero.png" uk-img>
+            <div class="home-hero" data-src="{%static 'assets/images/home-hero.jpeg' %}" uk-img>
                 <div class="uk-width-1-1">
                     <div class="page-content-inner uk-position-z-index">
                         <h1>Learn HTML , CSS , iphone <br> Apps & More</h1>
-                        <h4 class="my-lg-4"> Learn how to build websites & apps <br> write a code or start a business </h4>
+                        <h4 class="my-lg-4"> Learn how to build websites & apps <br> write a code or start a business
+                        </h4>
                         <a href="#" class="btn btn-default">Free trailer </a>
                     </div>
                 </div>
             </div>
 
-            <div class="container">
+            <!-- Content
+        ================================================== -->
 
+            <div class="section">
+                <div class="page-content-inner">
 
-                <!-- course card resume sliders  -->
-                {% if user.is_authenticated %}
-
-                <div class="section-small">
-
-                    <div uk-slider="finite: true" class="course-grid-slider">
-
-                        <div class="grid-slider-header">
+                    <div class="section-small text-md-left text-center">
+                        <div class="uk-child-width-1-2@m uk-gird-large uk-flex-middle" uk-grid>
                             <div>
-                                <h4 class="uk-text-truncate"> on going Courses</a>
-                                </h4>
+                                <img src="{%static 'assets/images/feature.png' %}" alt="">
                             </div>
-                            <div class="grid-slider-header-link">
-
-                                <a href="/View/Student-Profile#on-going-courses" class="button transparent uk-visible@m"> View all </a>
-                                <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
-                                <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
-
+                            <div>
+                                <h2>Learn anytime <br> and everywhere </h1>
+                                    <p> Get started with just your name and your email adress . It’s as simple <br> as
+                                        that
+                                        -- no payments or credit card information required. </p>
+                                    <a href="/View/Auth/Register" class="btn btn-soft-light"> Get started </a>
                             </div>
                         </div>
-
-                        <ul
-                            class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-5@m uk-grid">
-                            {% for user_selected_course in user.user_selected_courses.all %}
-                            <li>
-                                <a href="/View/{{user_selected_course.course_name_as_slug}}/Course-Details">
-                                    <div class="course-card-resume">
-                                        <div class="course-card-resume-thumbnail">
-                                            <img src="{{user_selected_course.course_thumbnail.url}}">
-                                        </div>
-                                        <div class="course-card-resume-body">
-                                            <h5>{{user_selected_course.course_name}}</h5>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-
                     </div>
 
                 </div>
-                    
-                {% endif %}
+            </div>
 
+            <div class="section-small delimiter-top">
 
+                <div class="container-small">
 
-
-
-                <div class="section-small pt-0">
-
-                    <div class="course-grid-slider" uk-slider="finite: true">
-
-                        <div class="grid-slider-header">
-                            <div>
-                                <h4 class="uk-text-truncate"> Browse recently added
-                                    <a href="#" class="text-muted">Courses</a> </h4>
-                            </div>
-                            <div class="grid-slider-header-link">
-
-                                <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
-                                <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
-
-                            </div>
-                        </div>
-
-                        <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid">
-                            {% for recently_added_course in recently_added_courses %}
-                            <li>
-                                <a href="/View/{{recently_added_course.course_name_as_slug}}/Course-Intro">
-                                    <div class="course-card">
-                                        <div class="course-card-thumbnail ">
-                                            <img src="{{recently_added_course.course_thumbnail.url}}">
-                                            <span class="play-button-trigger"></span>
-                                        </div>
-                                        <div class="course-card-body">
-                                            <div class="course-card-info">
-                                                <div>
-                                                    <span class="catagroy">{{recently_added_course.related_category.category_name}}</span>
+                    <div class="text-center mb-5">
+                        <h3> Check out our newest </h3>
+                        <h5> With our growing catalog of over 30 Nanodegree programs from beginner to advanced</h5>
+                    </div>
+                    <div class="course-grid-slider mt-lg-5" uk-slider="finite: true">
+                        <div class="uk-slider-container pb-3">
+                            <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid">
+                                {% for recently_added_course in recently_added_courses %}
+                                <li>
+                                    <a href="/View/{{recently_added_course.course_name_as_slug}}/Course-Intro">
+                                        <div class="course-card">
+                                            <div class="course-card-thumbnail ">
+                                                <img src="{{recently_added_course.course_thumbnail.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <div class="course-card-info">
+                                                    <div>
+                                                        <span class="catagroy">{{recently_added_course.related_subject.subject_name}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="icon-feather-bookmark icon-small"></i>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <button id="wishlist-successs-notification-toggler" class="demo" onclick="UIkit.notification({message: '<span uk-icon=\'icon: check\'></span> Added to wishlist', pos: 'bottom-right', status:'success'})" hidden></button>
-                                                    <i class="uil-heart-alt icon-small" onclick="wishlistHandler('addToWishList', {{course.id}})"></i>
+                                                <h4>{{recently_added_course.course_name}}</h4>
+                                                <p> {{recently_added_course.course_description}} </p>
+                                                <div class="course-card-footer">
+                                                    <h5> <i class="icon-feather-film"></i> 12 Lectures </h5>
+                                                    <h5> <i class="icon-feather-clock"></i> 64 Hours </h5>
                                                 </div>
                                             </div>
-                                            <h4>{{recently_added_course.course_name}} </h4>
-                                            <p>{{recently_added_course.course_description}}</p>
-                                            
+
                                         </div>
+                                    </a>
 
-                                    </div>
-                                </a>
-
-                            </li>
-                            {% endfor %}
-                        </ul>
-
-                    </div>
-
-                </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
 
 
-                <!-- footer
-               ================================================== -->
-                <div class="footer">
-                    <div class="uk-grid-collapse" uk-grid>
-                        <div class="uk-width-expand@s uk-first-column">
-                            <p>© 2021 <strong>Mental Education</strong>. All Rights Reserved. </p>
-                        </div>
-                        <div class="uk-width-auto@s">
-                            <nav class="footer-nav-icon">
-                                <ul>
-                                    <li><a href="#"><i class="icon-brand-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-brand-dribbble"></i></a></li>
-                                    <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
-                                    <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
-                                </ul>
-                            </nav>
+                            <a class="uk-position-center-left uk-position-small uk-hidden-hover slidenav-prev" href="#"
+                                uk-slider-item="previous"></a>
+                            <a class="uk-position-center-right uk-position-small uk-hidden-hover slidenav-next" href="#"
+                                uk-slider-item="next"></a>
+
                         </div>
                     </div>
-                </div>
 
+                    <div class="text-center">
+                        <a href="#" class="btn btn-soft-light btn-small btn-circle"> View More Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section text-center">
+                <div class="page-content-inner">
+
+                    <h2 class="mb-4"> We've got the technical stuff covered. </h2>
+                    <img src="{%static 'assets/images/feature-2.png' %}" alt="" class="my-lg-5">
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- footer
+        ================================================== -->
+        <div class="footer uk-margin-large-left">
+            <div class="container">
+                <div uk-grid>
+                    <div class="uk-width-1-3@m">
+                        <a href="home.html" class="uk-logo">
+                            <!-- logo icon -->
+                            <i class="uil-graduation-hat"> </i>
+                            Mental Education
+                        </a>
+                        <p class="footer-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero volutpat sed cras ornare.</p>
+                    </div>
+                    <div class="uk-width-expand@s uk-width-1-2">
+                        <div class="footer-links pl-lg-8">
+                            <h5>Explore </h5>
+                            <ul>
+                                <li><a > Courses </a></li>
+                                <li><a > Track </a></li>
+                                <li><a > Blog </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-width-expand@s uk-width-1-2">
+                        <div class="footer-links pl-lg-8">
+                            <h5> Account </h5>
+                            <ul>
+                                <li><a href="/View/Auth/Register"> Profile </a></li>
+                                <li><a href="/View/Auth/Register"> Settings </a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-width-expand@s uk-width-1-2">
+                        <div class="footer-links pl-lg-8">
+                            <h5> Resources</h5>
+                            <ul>
+                                <li><a href="#"> Contact </a></li>
+                                <li><a href="#"> Privacy Policy </a></li>
+                                <li><a href="#"> Terms of Use </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="uk-grid-collapse" uk-grid>
+                    <div class="uk-width-expand@s uk-first-column">
+                        <p>© 2021 <strong>Mental Education</strong>. All Rights Reserved. </p>
+                    </div>
+                    <div class="uk-width-auto@s">
+                        <nav class="footer-nav-icon">
+                            <ul>
+                                <li><a href="#"><i class="icon-brand-facebook"></i></a></li>
+                                <li><a href="#"><i class="icon-brand-dribbble"></i></a></li>
+                                <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
+                                <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
 
