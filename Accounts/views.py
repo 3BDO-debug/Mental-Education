@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from . import models
 from Main_View.models import Wishlist
-from Mental_Learning.auth_token import auth_token_generator
+from Mental_Education.auth_token import auth_token_generator
 
 # Create your views here.
 def register_handler(request):

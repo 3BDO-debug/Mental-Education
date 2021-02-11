@@ -1,5 +1,5 @@
 """
-ASGI config for Mental_Learning project.
+ASGI config for Mental_Education project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Mental_Learning.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Mental_Education.settings')
 
 application = get_asgi_application()
