@@ -48,7 +48,7 @@ def search_handler(request):
             "SearchResult.html",
             {
                 "search_results": search_results,
-                "categories": main_view_data["categories"],
+                "edu_stages": main_view_data["edu_stages"],
                 "user_wishlist": main_view_data["user_wishlist"],
             },
         )
@@ -58,7 +58,7 @@ def search_handler(request):
             "SearchResult.html",
             {
                 "search_results": search_results,
-                "categories": main_view_data["categories"],
+                "edu_stages": main_view_data["edu_stages"],
             },
         )
 
@@ -87,7 +87,11 @@ def home_page(request):
             {
                 "edu_stages": main_view_data["edu_stages"],
                 "staff_members": staff_members,
+<<<<<<< HEAD
                 "best_students": best_students,
+=======
+                "best_students" : best_students,
+>>>>>>> fc2faa9acedbddfff351c89bace7d79459fec4f0
                 "recently_added_courses": main_view_data["recently_added_courses"],
             },
         )

@@ -1,5 +1,5 @@
 """
-WSGI config for Mental_Learning project.
+WSGI config for Mental_Education project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Mental_Learning.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Mental_Education.settings')
 
 application = get_wsgi_application()
