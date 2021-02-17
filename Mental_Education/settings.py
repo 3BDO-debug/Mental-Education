@@ -25,7 +25,7 @@ SECRET_KEY = "vtb0fz1_2%am**s!@rxpww^fl)ce62(8ej9p@)gy)1zw$*mz4d"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = "Accounts.User"
 # Application definition
@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = "/styling/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "styling")]
-
+STATIC_ROOT = os.path.join(BASE_DIR, "stylingFiles")
 # Email Verfication Settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True

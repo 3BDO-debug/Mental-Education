@@ -64,14 +64,18 @@ def search_handler(request):
 
 
 def home_page(request):
-
+    staff_members = models.StaffMember.objects.all().order_by('-created_at')
+    best_students = models.BestStudent.objects.all().order_by("-created_at")
     main_view_data = get_main_view_data(request)
+
     if request.user.is_authenticated:
         return render(
             request,
             "HomePage.html",
             {
                 "edu_stages": main_view_data["edu_stages"],
+                "staff_members": staff_members,
+                "best_students" : best_students,
                 "user_wishlist": main_view_data["user_wishlist"],
                 "recently_added_courses": main_view_data["recently_added_courses"],
             },
@@ -82,6 +86,8 @@ def home_page(request):
             "HomePage.html",
             {
                 "edu_stages": main_view_data["edu_stages"],
+                "staff_members": staff_members,
+                "best_students" : best_students,
                 "recently_added_courses": main_view_data["recently_added_courses"],
             },
         )
