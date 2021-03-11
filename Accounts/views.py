@@ -80,7 +80,7 @@ def login_handler(request):
             (
                 "/View/Student-Profile-Settings"
                 if not request.user.is_teacher
-                else "/View/Teacher-Profile"
+                else f"/View/Teacher-Profile/{request.user.id}"
             )
         )
     else:

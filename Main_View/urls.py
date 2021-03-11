@@ -10,7 +10,7 @@ urlpatterns = [
     path("<slug:course_name_as_slug>/Course-Content", views.course_content_page),
     path("Quizes", views.quizes_page),
     path("Quiz", views.quiz_page),
-    path("Teacher-Profile", views.teacher_profile_page),
+    path("Teacher-Profile/<int:teacher_id>", views.teacher_profile_page),
     path("Student-Profile", views.student_profile_page),
     path("Student-Profile-Settings", views.student_profile_settings_page),
     path("Auth/<str:condition>", views.authentication_pages),

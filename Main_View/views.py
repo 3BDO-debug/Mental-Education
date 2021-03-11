@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from Accounts import models as Accounts_Models
 from . import models
 from Courses import models as Courses_Models
 from Courses_Reviews import models as Course_Reviews_Models
@@ -212,8 +213,6 @@ def course_intro_page(request, course_name_as_slug):
         )
 
 
-
-
 def course_details_page(request, course_name_as_slug):
     main_view_data = get_main_view_data(request)
 
@@ -254,8 +253,16 @@ def quiz_page(request):
     return render(request, "Quiz.html")
 
 
-def teacher_profile_page(request):
-    return render(request, "TeacherProfile.html")
+def teacher_profile_page(request, teacher_id):
+    teacher = Accounts_Models.User.objects.get(id=teacher_id)
+    print(teacher)
+    teacher_courses_data = Courses_Models.Course.objects.filter(tutored_by=teacher)
+    print(teacher_courses_data)
+    return render(
+        request,
+        "TeacherProfile.html",
+        {"teacher": teacher, "teacher_courses_data": teacher_courses_data},
+    )
 
 
 def student_profile_page(request):

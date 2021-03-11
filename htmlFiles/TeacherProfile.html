@@ -64,7 +64,7 @@
 
                         <a href="/">
                             <i style="font-size: 32px;" class="uil-graduation-hat"></i>
-                            <span>Mental Learning</span>
+                            <span>Mental Education</span>
                         </a>
 
                         <!-- Search box dropdown -->
@@ -100,10 +100,23 @@
 
                             <div class="dropdown-user-details">
                                 <div class="dropdown-user-avatar">
+                                    {% if user.is_teacher and user.id == teacher.id %}
+
                                     <img src="{{user.user_profile_pic.url}}" alt="">
+                                    {% else %}
+                                    <img src="{{teacher.user_profile_pic.url}}" alt="">
+
+                                    {% endif %}
+                                    
                                 </div>
                                 <div class="dropdown-user-name">
+                                    {% if user.is_teacher and user.id == teacher.id %}
+
                                     {{user.user_full_name}} <span>Teacher</span>
+                                    {% else %}
+                                    {{teacher.user_full_name}} <span>Teacher</span>
+
+                                    {% endif %}
                                 </div>
                             </div>
 
@@ -173,7 +186,7 @@
 
                            
                             
- 
+                            {% if user.is_teacher and user.id == teacher.id %}
 
                             <div class="uk-position-relative uk-visible-toggle " tabindex="-1" uk-slider="finite: true">
 
@@ -250,86 +263,38 @@
                                 <ul class="uk-slider-nav uk-dotnav uk-flex-center mt-3"></ul>
 
                             </div>
-
+                            {% endif %}
 
 
                         </div>
 
                         <div class="uk-card-default rounded  uk-height-large uk-overflow-auto">
                             <div class="uk-card-header py-3">
-                                <span class="uk-h5"> Your Courses</span>
+                                <span class="uk-h5"> My Courses</span>
 
                             </div>
 
                             <div class="uk-height-large" data-simplebar>
-
-                                <div class="uk-grid-small p-4" uk-grid>
+                                {% for course in teacher_courses_data %}
+                                <div class="uk-grid-small p-4" onclick="window.location.href='/View/{{course.course_name_as_slug}}/Course-Intro';" style="cursor: pointer;" uk-grid>
                                     <div class="uk-width-1-3@m">
-                                        <img src="../assets/images/course/2.png" class="  rounded" alt="">
+                                        <img src="{{course.course_thumbnail.url}}" class="  rounded" alt="">
                                     </div>
                                     <div class="uk-width-expand">
-                                        <h5 class="mb-2"> Learn Anglular Fonduments </h5>
-                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
+                                        <h5 class="mb-2"> {{course.course_name}} </h5>
+                                        <p class="uk-text-small mb-2"> Tutored by <a href="#"> {{course.tutored_by.user_full_name}} </a>
                                         </p>
                                         <p class="mb-0 uk-text-small mt-3">
-                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
-                                                10/2019 </span>
+                                            <span> Last updated
+                                                {{course.created_at}} </span>
                                         </p>
                                     </div>
                                 </div>
 
                                 <hr class="m-0">
 
-                                <div class="uk-grid-small p-4" uk-grid>
-                                    <div class="uk-width-1-3@m">
-                                        <img src="../assets/images/course/3.png" class="  rounded" alt="">
-                                    </div>
-                                    <div class="uk-width-expand">
-                                        <h5 class="mb-2"> The Complete JavaScript </h5>
-                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
-                                        </p>
-                                        <p class="mb-0 uk-text-small mt-3">
-                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
-                                                10/2019 </span>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <hr class="m-0">
-
-
-                                <div class="uk-grid-small p-4" uk-grid>
-                                    <div class="uk-width-1-3@m">
-                                        <img src="../assets/images/course/1.png" class="  rounded" alt="">
-                                    </div>
-                                    <div class="uk-width-expand">
-                                        <h5 class="mb-2"> Ultimate Web Developer Course </h5>
-                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
-                                        </p>
-                                        <p class="mb-0 uk-text-small mt-3">
-                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
-                                                10/2019 </span>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <hr class="m-0">
-
-
-                                <div class="uk-grid-small p-4" uk-grid>
-                                    <div class="uk-width-1-3@m">
-                                        <img src="../assets/images/course/2.png" class="  rounded" alt="">
-                                    </div>
-                                    <div class="uk-width-expand">
-                                        <h5 class="mb-2"> Learn Anglular Fonduments </h5>
-                                        <p class="uk-text-small mb-2"> Created by <a href="#"> Jonathan Madano </a>
-                                        </p>
-                                        <p class="mb-0 uk-text-small mt-3">
-                                            <span class="mr-3 bg-light p-2 mt-1"> 16 Enerolled</span><span> Last updated
-                                                10/2019 </span>
-                                        </p>
-                                    </div>
-                                </div>
+                                {% endfor %}
+                                
 
                             </div>
 
@@ -337,6 +302,7 @@
                         </div>
 
                         <!-- courses selling data -->   
+                        {% if user.is_teacher and user.id == teacher.id %}
                         <div class="uk-overflow-auto uk-background-default uk-margin-top uk-box-shadow-medium">
                             <table class="uk-table uk-table-hover uk-table-divider">
                                 <thead>
@@ -401,7 +367,7 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        {% endif %}
 
                     </div>
 

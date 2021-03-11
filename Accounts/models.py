@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-#from Educational_Stages.models import Subject
+
+# from Educational_Stages.models import Subject
 
 # Create your models here.
 
@@ -34,7 +35,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser):  
 
     user_full_name = models.CharField(max_length=750, verbose_name="User's Full Name")
     user_profile_pic = models.ImageField(
@@ -42,8 +43,8 @@ class User(AbstractBaseUser):
         upload_to="Users_Profile_Pics",
     )
     user_email = models.EmailField(unique=True, verbose_name="User's Email Address")
+    # user_selected_courses = models.ManyToManyField(Courses_Models.Course, verbose_name="User's on going courses", blank=True)
 
-    
     joined_at = models.DateTimeField(auto_now_add=True, verbose_name="Joined at")
     last_login = models.DateTimeField(
         verbose_name="last login",

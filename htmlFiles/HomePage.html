@@ -610,9 +610,10 @@
 
 
                             {% for staff_member in staff_members %}
+
                             <li class="uk-width-3-4">
                                 <div class="uk-cover-container">
-                                    <img style="width:100%; background-size:contain;" src="{{staff_member.staff_member_pic.url}}" alt="" >
+                                    <img onclick="window.location.href='/View/Teacher-Profile/{{staff_member.related_teacher_account.id}}';"  style="cursor: pointer; width:100%; background-size:contain;" src="{{staff_member.staff_member_pic.url}}" alt="" >
 
                                 </div>
                             </li>
