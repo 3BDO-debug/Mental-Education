@@ -14,6 +14,7 @@ class Wishlist(models.Model):
         return f"Wishlist for {self.related_account.user_full_name}"
 
 class StaffMember(models.Model):
+    related_teacher_account = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Related Teacher Account")
     staff_member_pic = models.ImageField(upload_to='Staff_Members_Photos', verbose_name="Staff Member Picture")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created at")
 

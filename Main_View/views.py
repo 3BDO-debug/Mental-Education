@@ -212,6 +212,8 @@ def course_intro_page(request, course_name_as_slug):
         )
 
 
+
+
 def course_details_page(request, course_name_as_slug):
     main_view_data = get_main_view_data(request)
 
