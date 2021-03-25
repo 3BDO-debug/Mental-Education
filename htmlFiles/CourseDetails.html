@@ -564,8 +564,10 @@
 
                             <div class="uk-flex uk-flex-between uk-flex-middle">
                                 <div class=" uk-visible@m">
-                                    <a hred="#" uk-tooltip="title: Add to your Bookmarks ; pos: top">
+                                    {% if course.attached_PDF %}
+                                    <a hreF="{{course.attached_PDF.url}}" uk-tooltip="title: Download attached PDF ; pos: top">
                                         <i class="icon-line-awesome-file-pdf-o"></i> Download attached PDF</a>
+                                    {% endif %}
                                     
                                 </div>
                                 <a href="/View/{{course.course_name_as_slug}}/Course-Content" class="btn-course-start-2 my-lg-4 mt-3"> Start Learning
@@ -612,28 +614,7 @@
                                 <p> {{course.course_description}}</p>
                                 
 
-                                <h4> What you’ll learn </h3>
-                                    <div class="uk-child-width-1-2@s" uk-grid>
-                                        <div>
-                                            <ul class="list-2">
-                                                <li>Setting up the environment </li>
-                                                <li>Advanced HTML Practices</li>
-                                                <li>Build a portfolio website</li>
-                                                <li>Responsive Designs</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <ul class="list-2">
-                                                <li>Understand HTML Programming</li>
-                                                <li>Code HTML</li>
-                                                <li>Start building beautiful websites</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-
-
-                            </li>
+                             </li>
 
                             <!-- course Curriculum-->
                             <li>
@@ -749,7 +730,7 @@
     
                                
                             <div>
-                                <a href="/View/{{course.course_name_as_slug}}">
+                                <a href="/View/{{course.course_name_as_slug}}/Course-Intro">
                                     <div class="course-card">
                                         <div class="course-card-thumbnail ">
                                             <img src="{{course.course_thumbnail.url}}">
@@ -784,7 +765,7 @@
                <div class="footer">
                 <div class="uk-grid-collapse" uk-grid>
                     <div class="uk-width-expand@s uk-first-column">
-                        <p>© 2021 <strong>Mental Education</strong>. All Rights Reserved. </p>
+                        <p>© 2021 <strong>Mental Education</strong> All Rights Reserved. Developed by <a href="https://codehustle.live">Code Hustle</a>. </p>
                     </div>
                     <div class="uk-width-auto@s">
                         <nav class="footer-nav-icon">

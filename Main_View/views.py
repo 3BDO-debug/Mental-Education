@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from Accounts import models as Accounts_Models
@@ -100,6 +100,7 @@ def edu_stage_levels_page(request, edu_stage_id):
     edu_stage_levels = Edu_Stages_Models.EducationStageLevel.objects.filter(
         related_edu_stage=edu_stage_id
     )
+
     if request.user.is_authenticated:
         return render(
             request,
@@ -159,7 +160,6 @@ def courses_page(request, related_edu_stage_level_subject_id):
     paginator = Paginator(category_courses, 4)
     paginator_status = paginator.page(page)
     category_courses = paginator_status.object_list
-
     if request.user.is_authenticated:
 
         return render(
@@ -214,35 +214,45 @@ def course_intro_page(request, course_name_as_slug):
 
 
 def course_details_page(request, course_name_as_slug):
-    main_view_data = get_main_view_data(request)
+    if request.user.is_authenticated:
+        main_view_data = get_main_view_data(request)
 
-    course = Courses_Models.Course.objects.get(course_name_as_slug=course_name_as_slug)
-    related_courses = Courses_Models.Course.objects.filter(
-        related_subject=course.related_subject
-    )[0:2]
-    return render(
-        request,
-        "CourseDetails.html",
-        {
-            "course": course,
-            "course_reviews": course_reviews_data(course_name_as_slug),
-            "related_courses": related_courses,
-            "edu_stages": main_view_data["edu_stages"],
-            "user_wishlist": main_view_data["user_wishlist"],
-        },
-    )
+        course = Courses_Models.Course.objects.get(
+            course_name_as_slug=course_name_as_slug
+        )
+        related_courses = Courses_Models.Course.objects.filter(
+            related_subject=course.related_subject
+        )[0:2]
+        return render(
+            request,
+            "CourseDetails.html",
+            {
+                "course": course,
+                "course_reviews": course_reviews_data(course_name_as_slug),
+                "related_courses": related_courses,
+                "edu_stages": main_view_data["edu_stages"],
+                "user_wishlist": main_view_data["user_wishlist"],
+            },
+        )
+    else:
+        return redirect("/")
 
 
 def course_content_page(request, course_name_as_slug):
-    course = Courses_Models.Course.objects.get(course_name_as_slug=course_name_as_slug)
-
-    return render(
-        request,
-        "CourseContent.html",
-        {
-            "course": course,
-        },
-    )
+    if request.user.is_authenticated:
+        course = Courses_Models.Course.objects.get(
+            course_name_as_slug=course_name_as_slug
+        )
+        course_lessons = Courses_Models.CourseLesson.objects.filter(
+            related_course=course
+        )
+        return render(
+            request,
+            "CourseContent.html",
+            {"course": course, "course_lessons": course_lessons},
+        )
+    else:
+        return redirect("/")
 
 
 def quizes_page(request):

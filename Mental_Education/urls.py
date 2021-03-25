@@ -17,12 +17,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from Main_View.views import home_page
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('View/', include("Main_View.urls")),
-    path('Accounts/User/', include("Accounts.urls")),
-    path('Course-Reviews/', include("Courses_Reviews.urls")),
-    path('', home_page)
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("admin/", admin.site.urls),
+    path("View/", include("Main_View.urls")),
+    path("Accounts/User/", include("Accounts.urls")),
+    path("Course-Reviews/", include("Courses_Reviews.urls")),
+    path("admin_resumable/", include("admin_resumable.urls")),
+    path("", home_page),
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

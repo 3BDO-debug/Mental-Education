@@ -137,13 +137,13 @@
 
           <div class="course-content-inner">
             <ul id="video-slider" class="uk-switcher">
-              {% for course_lesson in course.course_content.all %}
+              {% for course_lesson in course_lessons %}
               <li>
                 <!-- to autoplay video uk-video="automute: true" -->
 
                 <video
                   controls
-                  src="{{course_lesson.lesson_video_file.url}}"
+                  src="{{course_lesson.lesson_video_file}}"
                   loop
                   muted
                   playsinline
@@ -171,7 +171,7 @@
                     class="course-video-list highlight-watched"
                     uk-switcher=" connect: #video-slider  ; animation: uk-animation-slide-right-small, uk-animation-slide-left-medium"
                   >
-                    {% for course_lesson in course.course_content.all %}
+                    {% for course_lesson in course_lessons %}
 
                     <li><a href="#"> {{course_lesson.lesson_name}} </a></li>
 

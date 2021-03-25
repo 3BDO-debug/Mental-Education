@@ -2,6 +2,7 @@ from django.db import models
 from Accounts.models import User
 from Educational_Stages.models import Subject
 from django.utils.text import slugify
+from admin_resumable.fields import ModelAdminResumableFileField
 
 # Create your models here.
 """class CourseCategory(models.Model):
@@ -23,8 +24,6 @@ from django.utils.text import slugify
         return self.category_name"""
 
 
-
-
 class Course(models.Model):
     course_name = models.CharField(verbose_name="Course Name", max_length=300)
     course_thumbnail = models.ImageField(
@@ -40,15 +39,16 @@ class Course(models.Model):
     course_description = models.TextField(
         verbose_name="Course Description", default="Course Description Goes here."
     )
-    tutored_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Tutored By")
+    tutored_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name="Tutored By"
+    )
     course_name_as_slug = models.SlugField(
         max_length=350, verbose_name="Course Name as Slug", default="slug-here"
     )
     related_subject = models.ForeignKey(
         Subject, on_delete=models.CASCADE, verbose_name="Related Subject"
     )
-    
-    
+
     attached_PDF = models.FileField(null=True, verbose_name="Attach PDF", blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created at")
 
@@ -64,16 +64,12 @@ class Course(models.Model):
         return self.course_name
 
 
-
 class CourseLesson(models.Model):
-    related_course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Related Course")
-    lesson_name = models.CharField(verbose_name="Lesson Name", max_length=300)
-    lesson_video_file = models.FileField(
-        verbose_name="Lesson Video File",
-        upload_to="Courses_Contents",
-        null=True,
-        blank=True,
+    related_course = models.ForeignKey(
+        Course, on_delete=models.CASCADE, verbose_name="Related Course"
     )
+    lesson_name = models.CharField(verbose_name="Lesson Name", max_length=300)
+    lesson_video_file = ModelAdminResumableFileField()
     lesson_video_link = models.CharField(
         verbose_name="Lesson Video Link", max_length=700, null=True, blank=True
     )
@@ -85,3 +81,5 @@ class CourseLesson(models.Model):
 
     def __str__(self):
         return self.lesson_name
+
+

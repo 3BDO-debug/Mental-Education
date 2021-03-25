@@ -25,26 +25,27 @@ SECRET_KEY = "vtb0fz1_2%am**s!@rxpww^fl)ce62(8ej9p@)gy)1zw$*mz4d"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = "Accounts.User"
+
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'Accounts',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "Accounts",
     "Main_View",
-    'Courses',
-    'Courses_Reviews',
-    'Quizes',
-    'Subjects',
-    'Educational_Stages'
-
+    "Courses",
+    "Courses_Reviews",
+    "Quizes",
+    "Subjects",
+    "Educational_Stages",
+    "admin_resumable",
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,6 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
-                
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -129,6 +129,9 @@ USE_TZ = True
 STATIC_URL = "/styling/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "styling")]
 STATIC_ROOT = os.path.join(BASE_DIR, "stylingFiles")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediaFiles")
 # Email Verfication Settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
